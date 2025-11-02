@@ -1,6 +1,5 @@
 # Elysia Task Tracker
-
-A clean-architecture backend service for managing tasks using Bun, Elysia, Drizzle ORM, PostgreSQL, and Redis.
+A backend service for managing tasks using Bun, Elysia, Drizzle ORM, PostgreSQL, and Redis.
 
 ## Project Structure
 

@@ -1,13 +1,13 @@
-import { Task } from "../../domain/entities/task";
+import { Task } from '../../domain/entities/task'
 
 export interface TaskDTO {
-  id: string;
-  title: string;
-  description: string | null;
-  dueDate: string | null;
-  status: string;
-  createdAt: string;
-  updatedAt: string;
+  id: string
+  title: string
+  description: string | null
+  dueDate: string | null
+  status: string
+  createdAt: string
+  updatedAt: string
 }
 
 export const toTaskDTO = (task: Task): TaskDTO => ({
@@ -17,5 +17,5 @@ export const toTaskDTO = (task: Task): TaskDTO => ({
   dueDate: task.dueDate?.getValue().toISOString() ?? null,
   status: task.status,
   createdAt: task.createdAt.toISOString(),
-  updatedAt: task.updatedAt.toISOString()
-});
+  updatedAt: task.updatedAt.toISOString(),
+})
