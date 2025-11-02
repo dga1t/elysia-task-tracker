@@ -7,4 +7,5 @@ export interface NotificationPayload {
 
 export interface NotificationQueue {
   enqueue(payload: NotificationPayload): Promise<void>
+  disconnect(): Promise<void>
 }

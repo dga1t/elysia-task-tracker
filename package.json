@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "bun run src/server.ts",
-    "build": "bun build src/server.ts --outdir dist",
+    "build": "bun build src/server.ts --outdir dist --target bun",
     "start": "bun run dist/server.js",
     "migrate": "bunx drizzle-kit migrate",
     "generate": "bunx drizzle-kit generate:pg",
