@@ -1,4 +1,4 @@
-import { eq } from 'drizzle-orm'
+import { asc, eq } from 'drizzle-orm'
 import { Task, TaskStatus } from '../../domain/entities/task'
 import {
   CreateTaskInput,
@@ -41,13 +41,10 @@ export class DrizzleTaskRepository implements TaskRepository {
   }
 
   async findAll(status?: TaskStatus): Promise<Task[]> {
-    let query = db.select().from(tasks)
-
-    if (status) {
-      query = query.where(eq(tasks.status, status))
-    }
-
-    const records = await query.orderBy(tasks.createdAt)
+    const records = await db.query.tasks.findMany({
+      where: status ? (task, { eq }) => eq(task.status, status) : undefined,
+      orderBy: (task) => [asc(task.createdAt)],
+    })
     return records.map(toEntity)
   }
 

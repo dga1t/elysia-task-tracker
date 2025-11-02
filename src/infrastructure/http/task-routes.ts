@@ -48,7 +48,8 @@ export const registerTaskRoutes = <Prefix extends string>(app: Elysia<Prefix>, s
         '/:id',
         async ({ params, set }) => {
           try {
-            const task = await service.getTask(params.id)
+            const { id } = params as { id: string }
+            const task = await service.getTask(id)
             return { data: task }
           } catch (error) {
             const formatted = formatError(error)
@@ -64,7 +65,8 @@ export const registerTaskRoutes = <Prefix extends string>(app: Elysia<Prefix>, s
         '/:id',
         async ({ params, body, set }) => {
           try {
-            const task = await service.updateTask(params.id, body)
+            const { id } = params as { id: string }
+            const task = await service.updateTask(id, body)
             return { data: task }
           } catch (error) {
             const formatted = formatError(error)
@@ -86,7 +88,8 @@ export const registerTaskRoutes = <Prefix extends string>(app: Elysia<Prefix>, s
         '/:id',
         async ({ params, set }) => {
           try {
-            await service.deleteTask(params.id)
+            const { id } = params as { id: string }
+            await service.deleteTask(id)
             set.status = 204
             return null
           } catch (error) {
